@@ -1,12 +1,13 @@
 import React from 'react';
-
+import Menu from './Menu/Menu';
+import './layout.css';
 
 function Layout(props){
 
     return(
-        <div>
+        <div className="container-fluid">
             <div>
-                encabezado
+                <Menu />
             </div>
             <div>
                 {props.children}

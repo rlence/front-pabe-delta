@@ -1,0 +1,14 @@
+.menu{
+    background-color: red;
+    justify-content: space-between;
+    width: 100%;
+    padding: 2% 3%;
+}
+
+.row{
+    margin: 0;
+    width: 100%;
+}
+
+
+
