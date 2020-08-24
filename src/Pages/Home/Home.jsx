@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./home.css";
 import { loginUser } from "../../Service/login";
+import { Redirect } from 'react-router-dom';
 
 function Home(props) {
   const [state, setStata] = useState({
@@ -13,11 +14,13 @@ function Home(props) {
     messageErr: "",
   });
 
+  const [redirect, setRedirect] = useState(false);
+
   const handelSubmit = (e) => {
     e.preventDefault();
     loginUser(state.email, state.password)
         .then((res) => {
-            
+            setRedirect(true);
         })
         .catch((err) => {
             setError({ err:true, messageErr:"Se produjo un error"})
@@ -74,6 +77,8 @@ function Home(props) {
             </div>
             : null
         }
+
+        {redirect ? <Redirect to="/pabelist" /> : null}
 
       </div>
     </div>

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 export function loginUser(email, password){
 
-    return Promise.reject(true);
+    return Promise.resolve(true);
 
 }
 
