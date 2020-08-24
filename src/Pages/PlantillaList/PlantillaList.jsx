@@ -8,30 +8,27 @@ function PlantillaList(props) {
     const [ state, setState] = useState({
         loadding: false,
         redirect:false,
-        id:""
-    }) 
+        id:"",
+        list:[]
+    })
+    const [originaList, setList] = useState([]); 
 
     useEffect(
         ()=>{
-
+            initialState()
         }, []
     )
 
-    const list =[
-        '05-10-2020',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-        'hola',
-    ] 
+    const initialState = () =>{
+        getDocuments()
+        .then( res => {
+            setState({
+                ...state, list: res
+            })
+            setList(res);
+        })
+        .catch(err => console.log(err));
+    }
 
     const selectDate = (e,data) => {
         e.preventDefault();
@@ -42,12 +39,28 @@ function PlantillaList(props) {
     const createDocument = e => {
         e.preventDefault();
         createNewDocument()
+        .then( res => {
+            if(res !== undefined){
+                initialState();
+            }
+        })
+        .catch( err => console.log('estoy en el err'))
 
     }
 
     const handelChange = e => {
         const value = e.target.value;
-        console.log(value)
+        if(value.length === 0){
+            setState({...state, list:originaList})
+            return;
+        }
+        const filterList = [];
+        originaList.map( date => { 
+            if(date.includes(value)){
+                filterList.push(date)
+            }
+        })
+        setState({...state, list:filterList})
     }
 
   return (
@@ -56,7 +69,7 @@ function PlantillaList(props) {
 
         <h5> Lista por días  </h5>
         <ul className="list-group">
-            { list.map( (data, idx) => <li onClick={(e) => selectDate(e, data) }  key={idx} className="list-group-item"> {data} </li>) }
+            { state.list.map( (data, idx) => <li onClick={(e) => selectDate(e, data) }  key={idx} className="list-group-item"> {data} </li>) }
         </ul>
 
         <button type="button" onClick={createDocument} className="btn btn-primary">Nuevo Documento</button>

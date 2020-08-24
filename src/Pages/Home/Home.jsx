@@ -20,10 +20,11 @@ function Home(props) {
     e.preventDefault();
     loginUser(state.email, state.password)
         .then((res) => {
-            setRedirect(true);
+          setRedirect(true);
         })
         .catch((err) => {
-            setError({ err:true, messageErr:"Se produjo un error"})
+          console.log(err)
+            setError({ err:true, messageErr:err})
         });
   };
 
@@ -43,7 +44,7 @@ function Home(props) {
               </span>
             </div>
             <input
-              type="text"
+              type="email"
               className="form-control"
               aria-label="Sizing example input"
               aria-describedby="inputGroup-sizing-sm"
