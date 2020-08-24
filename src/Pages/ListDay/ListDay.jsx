@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { getOneDocument, newTemplate } from "../../Service/data";
+import {Redirect} from 'react-router-dom';
 import "./listDay.css";
 
 function ListDay(props) {
@@ -14,6 +15,9 @@ function ListDay(props) {
   const [err, setErr] = useState({
       modal:'',
       errMessage:''
+  })
+  const [redirect, setRedirect] = useState({
+      back:false
   })
 
   useEffect(() => {
@@ -63,6 +67,11 @@ function ListDay(props) {
     .catch( err => console.log(err))
   };
 
+  const goBack = e => {
+    e.preventDefault();
+    setRedirect({...redirect, back:true})
+  }
+
   return (
     <Fragment>
       <input
@@ -92,6 +101,14 @@ function ListDay(props) {
         data-target="#exampleModal"
       >
         Nueva Plantilla
+      </button>
+
+      <button
+        type="button"
+        className="btn btn-warning"
+        onClick={goBack}
+      >
+        Atras
       </button>
 
       {/*  MODAL  */}
@@ -143,6 +160,8 @@ function ListDay(props) {
           </div>
         </div>
       </div>
+
+      {redirect.back ? <Redirect to="/pabelist" /> : null}
     </Fragment>
   );
 }
