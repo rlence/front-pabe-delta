@@ -59,7 +59,7 @@ function PlantillaList(props) {
             { list.map( (data, idx) => <li onClick={(e) => selectDate(e, data) }  key={idx} className="list-group-item"> {data} </li>) }
         </ul>
 
-        <button type="button" onClick={createDocument} className="btn btn-primary">Nuevo</button>
+        <button type="button" onClick={createDocument} className="btn btn-primary">Nuevo Documento</button>
         { state.redirect ? <Redirect to={`/listday/${state.id}`} /> : null } 
     </Fragment>
 

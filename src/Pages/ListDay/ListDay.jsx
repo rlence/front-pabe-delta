@@ -6,7 +6,8 @@ function ListDay(props){
     const [state, setState] = useState({
         data:[
             'hola',
-        ]
+        ],
+        
     })
 
     useEffect(
