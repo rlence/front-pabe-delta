@@ -9,7 +9,7 @@ function Menu(props){
 
     return(
         <div className="row col-sm-12 col-md-12 menu">     
-            <p> Pabe Dealta </p>
+            <p> Pabe Delta </p>
             <button type="button" className="btn btn-light"
                 onClick={HandelClick}
             > Cerrar cesión </button>
