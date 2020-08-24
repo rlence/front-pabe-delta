@@ -1,6 +1,13 @@
+.inputSearch{
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+
+
 .btn-primary{
+    margin-top: 3%;
     border-radius: 200px;
-    padding: 3%;
+    padding: 15px;
     float:right;
     position: sticky;
     z-index: 3;

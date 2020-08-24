@@ -6,7 +6,7 @@ function Layout(props){
 
     const goBack = e => {
         e.preventDefault();
-        window.history.go(-1);
+        //window.history.go(-1);
     }
 
     return(
@@ -18,7 +18,7 @@ function Layout(props){
                 {props.children}
             </div>
             <div className="footer">
-                <button type="button" onClick={goBack} class="btn btn-warning"> Atras </button>
+                {/*<button type="button" onClick={goBack} className="btn btn-warning"> Atras </button>*/}
             </div>
         </div>
     )
