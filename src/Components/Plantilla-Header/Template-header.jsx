@@ -24,11 +24,11 @@ function TemplateHeader(props){
     return (
         <from onChange={ e => setState({...state, [e.target.name]: e.target.value})} submit={handelSubmit} >
             <div className="row">
-                <div className="col-sm-8 col-md-8 title">
+                <div className="col-sm-7 col-md-7 title">
                     <h6> FICHA Procedimiento de Aislamiento </h6>
                     <h6> Bloqueo y Etiquetado (PABE) </h6>
                 </div>
-            <div className="col-sm-4 col-md-4">img alimentos polar</div>
+            <div className="col-sm-5 col-md-5">img alimentos polar</div>
             </div>
             <div className="row">
                 <div className="col-sm-6 col-md-6 line">

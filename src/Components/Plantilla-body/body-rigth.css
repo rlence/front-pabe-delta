@@ -1,0 +1,15 @@
+.red-box > ol {
+    text-align: left;
+}
+
+.text-green{
+    color: green;
+}
+
+.header-grey-box{
+    background-color: rgb(97, 97, 97);
+}
+
+.ancho{
+    width: 50%;
+}
