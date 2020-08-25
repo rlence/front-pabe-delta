@@ -5,6 +5,7 @@ import LayOut from './Layout/Layout';
 import Home from './Pages/Home/Home';
 import PlantillaList from './Pages/PlantillaList/PlantillaList';
 import ListDay from './Pages/ListDay/ListDay';
+import Template from './Pages/Plantilla/Template';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/"  component={Home} exact/>
           <Route path="/pabelist" component={PlantillaList} exact/>
           <Route path="/listday/:id" component={ListDay} exact />
+          <Route path="/template/:id" component={Template} exact />
         </Switch>
       </LayOut>
     </BrowserRouter>

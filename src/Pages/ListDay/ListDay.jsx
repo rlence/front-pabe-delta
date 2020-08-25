@@ -17,7 +17,9 @@ function ListDay(props) {
       errMessage:''
   })
   const [redirect, setRedirect] = useState({
-      back:false
+      back:false,
+      template:false,
+      id:''
   })
 
   useEffect(() => {
@@ -53,7 +55,12 @@ function ListDay(props) {
     setState({...state, data:filterList})
   };
 
-  const selectDocument = (e, data) => {};
+  const selectDocument = (e, data) => {
+    const saveLocal = JSON.parse(data);
+    sessionStorage.setItem('templateData', saveLocal);
+    setRedirect({...redirect, id: data.name, template:true})
+
+  };
 
   const createTemplate = (e) => {
     
@@ -161,7 +168,8 @@ function ListDay(props) {
         </div>
       </div>
 
-      {redirect.back ? <Redirect to="/pabelist" /> : null}
+    {redirect.template ? <React to={`/template/${redirect.id}`} /> : null }  
+    {redirect.back ? <Redirect to="/pabelist" /> : null}
     </Fragment>
   );
 }

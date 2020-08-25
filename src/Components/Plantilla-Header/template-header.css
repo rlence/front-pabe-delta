@@ -1,0 +1,9 @@
+.title{
+    text-align: center;
+    color: #ffffff;
+    background-color: red;
+}
+
+.line{
+    border: solid 1px black;
+}
