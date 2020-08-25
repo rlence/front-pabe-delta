@@ -32,10 +32,8 @@ function TemplateHeader(props){
             </div>
             <div className="row">
                 <div className="col-sm-6 col-md-6 line">
-                    <p><b>Descripción de máquina o equipo:</b> </p>
-                    <div className="row">
-                        <input type="text" name="maquina" />
-                    </div>
+                    <p><b>Descripción de máquina o equipo:</b> </p>   
+                    <input type="text" name="maquina" />            
                 </div>
                 <div className="col-sm-6 col-md-6 line">
                     <div className="row">
