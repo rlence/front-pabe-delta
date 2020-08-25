@@ -36,7 +36,7 @@ export async function createNewDocument(){
         const include = data.includes(todayFormat);
         if(!include){
             list = [todayFormat, ...data];
-            const newList = await db.collection("allTemplate").doc("VktypwFmRIgKbwTWSmOF").update({
+            await db.collection("allTemplate").doc("VktypwFmRIgKbwTWSmOF").update({
                 doc: list
             })
         }

@@ -1,0 +1,21 @@
+.first-img{
+    margin: 3% 0;
+    height: 150px;
+    border: red solid 1px;
+}
+
+
+.red-box{
+    margin: 4% 0;
+    border: red solid 1px;
+    text-align: center;
+}
+
+.header-red-box{
+    background-color: red;
+    
+}
+
+.red-box > ul {
+    text-align: left;
+}

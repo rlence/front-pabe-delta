@@ -26,10 +26,11 @@ function ListDay(props) {
     const url = window.location.pathname.split("/");
     const id = url[2];
     setState({ ...state, id: id });
-    getData(id);
+    // eslint-disable-next-line 
+    getDataDocument(id);
   }, []);
 
-  const getData = (id) => {
+  const getDataDocument = (id) => {
     getOneDocument(id)
       .then((res) => {
         setState({ ...state, data: res.list, date: res.create_date });
@@ -70,7 +71,7 @@ function ListDay(props) {
     }
 
     newTemplate(nameTemplate, state.date)
-    .then( res => getData(state.date))
+    .then( res => getDataDocument(state.date))
     .catch( err => console.log(err))
   };
 

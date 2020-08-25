@@ -11,7 +11,7 @@ export async function loginUser(email, password){
 
 
         if(err.code){
-            if(err.code == 'auth/wrong-password'){
+            if(err.code === 'auth/wrong-password'){
                 return Promise.reject('Contraseña invalida')
             }else{
                 return Promise.reject('El usuario no existe');

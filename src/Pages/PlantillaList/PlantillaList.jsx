@@ -15,11 +15,11 @@ function PlantillaList(props) {
 
     useEffect(
         ()=>{
-            initialState()
+            stateInitial()
         }, []
     )
 
-    const initialState = () =>{
+    const stateInitial = () =>{
         getDocuments()
         .then( res => {
             setState({
@@ -41,7 +41,7 @@ function PlantillaList(props) {
         createNewDocument()
         .then( res => {
             if(res !== undefined){
-                initialState();
+                stateInitial();
             }
         })
         .catch( err => console.log('estoy en el err'))
