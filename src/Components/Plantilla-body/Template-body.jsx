@@ -10,6 +10,18 @@ function TemplateBody(props){
         listDesactivacion:[],
         activacion:"",
         listActivacion:[],
+        presentes:"",
+        listPresentes:[],
+        bloqueo:"",
+        listBloqueo:[],
+        residuales:"",
+        listResiduales:[],
+        puesta:"",
+        listPuesta:[],
+        pabe:"",
+        pabeAmount:"",
+        listPabe:[]
+
 
     }) 
     console.log(state)

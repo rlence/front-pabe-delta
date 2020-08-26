@@ -169,7 +169,7 @@ function ListDay(props) {
         </div>
       </div>
 
-    {redirect.template ? <React to={`/template/${redirect.id}`} /> : null }  
+    {redirect.template ? <React to={`/template/${state.date}/${redirect.id}`} /> : null }  
     {redirect.back ? <Redirect to="/pabelist" /> : null}
     </Fragment>
   );

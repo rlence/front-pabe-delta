@@ -13,3 +13,24 @@
 .ancho{
     width: 50%;
 }
+
+.decoration{
+    list-style: none;
+}
+
+.input-center{
+    justify-content: center;
+}
+
+.input-number{
+    width: 15% !important;
+    margin-right: 2%;
+}
+
+.left{
+    text-align: left;
+}
+
+.img-txt{
+    width: 25%;
+}

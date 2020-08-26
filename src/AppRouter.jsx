@@ -15,7 +15,7 @@ function App() {
           <Route path="/"  component={Home} exact/>
           <Route path="/pabelist" component={PlantillaList} exact/>
           <Route path="/listday/:id" component={ListDay} exact />
-          <Route path="/template/:id" component={Template} exact />
+          <Route path="/template/:date/:id" component={Template} exact />
         </Switch>
       </LayOut>
     </BrowserRouter>

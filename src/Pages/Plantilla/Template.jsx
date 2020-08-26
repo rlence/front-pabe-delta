@@ -9,6 +9,9 @@ function Template(props){
         <div>
             <TemplateHeader />
             <TemplateBody />
+            <div className="footer-template">
+                
+            </div>
         </div>
     )
 }
