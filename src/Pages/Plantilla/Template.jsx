@@ -10,7 +10,8 @@ function Template(props){
             <TemplateHeader />
             <TemplateBody />
             <div className="footer-template">
-                
+                <button type="button" class="btn btn-secondary">Cancelar</button>
+                <button type="button" class="btn btn-success">Guardar</button>
             </div>
         </div>
     )

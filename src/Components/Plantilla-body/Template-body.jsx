@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import BodyLeft from './Body-left';
 import BodyRigth from './Body-rigth';
+import BodyFooter from './Body-footer';
 
 function TemplateBody(props){
 
@@ -33,6 +34,9 @@ function TemplateBody(props){
                 </div>
                 <div className="col-sm-6 col-md-6">
                     <BodyRigth state={state} setState={setState} />
+                </div>
+                <div className="col-sm-12 col-md-12">
+                    <BodyFooter state={state} setState={setState} />
                 </div>
             </div>
         </form>

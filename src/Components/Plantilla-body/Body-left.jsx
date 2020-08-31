@@ -1,7 +1,13 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useState} from 'react';
 import './body-left.css';
 
 function BodyLeft({state, setState}){
+
+    const [img, setImg] = useState('');
+    const [show, setShow] = useState({
+        img:true,
+        input: false
+    })
 
     const handelClick = (e, type) => {
         e.preventDefault();
@@ -16,11 +22,30 @@ function BodyLeft({state, setState}){
             setState({...state, listDesactivacion:list, desactivacion:""})
         }
     }
+
+    const changeImg = e => {
+        console.log("photo",e.target.value)
+        console.log('file', e.target)
+        const photo = e.target.value
+        const url = URL.createObjectURL( new Blob([photo], {type:"application/jpg"}))
+        console.log('url', url);
+       
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            if(reader.readyState === 2){
+                setImg(reader.result);
+            }
+        }
+
+        reader.readAsDataURL(e.target.files[0]);
+        
+    }
    
     return(
         <Fragment>
             <div className="first-img">
-                <input type="file" name="firstImg" />
+                <input type="file" name="firstImg" id="firtPhoto"  onChange={changeImg} />
+                <img src={img} />
             </div>
             <div className="column red-box">
                 <div className="header-red-box">
