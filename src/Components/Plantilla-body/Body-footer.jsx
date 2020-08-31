@@ -10,7 +10,14 @@ function BodyFooter(props){
                     <p><b>Puntos de Bloqueo</b></p>
                 </div>
                 <div className="row">
-                    <input  />
+                    <input  type="file" name="img1"  />
+                    <input  type="file" name="img2"  />
+                    <input  type="file" name="img3"  />
+                </div>
+                <div className="row">
+                    <input  type="file" name="img4"  />
+                    <input  type="file" name="img5"  />
+                    <input  type="file" name="img6"  />
                 </div>
             </div>
         </Fragment>

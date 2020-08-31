@@ -28,7 +28,9 @@ function TemplateHeader(props){
                     <h6> FICHA Procedimiento de Aislamiento </h6>
                     <h6> Bloqueo y Etiquetado (PABE) </h6>
                 </div>
-            <div className="col-sm-5 col-md-5">img alimentos polar</div>
+            <div className="col-sm-5 col-md-5">
+                <img src="./img/logopolar.png" alt="logo polar" className="logo-img" />
+            </div>
             </div>
             <div className="row">
                 <div className="col-sm-6 col-md-6 line">
