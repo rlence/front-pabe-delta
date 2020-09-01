@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import './body-rigth.css';
 
 function BodyRigth({state, setState}){
@@ -40,6 +40,42 @@ function BodyRigth({state, setState}){
             default:
                 break;
         }
+    }
+
+    const [ opciones, setOpciones] = useState({
+        opcion1:'',
+        text1:"",
+        show1: false,
+        opcion2:'',
+        text2:"",
+        show2: false,
+        opcion3:'',
+        text3:"",
+        show3: false,
+        opcion4:'',
+        text4:"",
+        show4: false,
+    });
+
+    const listImg = [
+        { type: 'Breaker', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/Breaker.jpg?alt=media&token=60148f32-7c7c-4114-9cc1-270b483d9442"},
+        { type: 'Cable', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/Cable.jpg?alt=media&token=732cec47-5283-4c9d-b183-5c93847fe576"},
+        { type: 'Candado', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/Candado.jpg?alt=media&token=f0e19459-61e5-41df-a105-d5d0dbc02c5c"},
+        { type: 'Etiqueta', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/Etiqueta.jpg?alt=media&token=a52d0fbe-2a4d-482d-889f-c260007e83ce"},
+        { type: 'Universal Breaker', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/Universal%20Breaker%20ML.jpg?alt=media&token=51a69802-cde3-42df-b2df-80c02e17724d"},
+        { type: 'Valvula', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/Valvula.jpg?alt=media&token=6dd750c3-a7b1-46b9-9089-d8c6e48e50ab"},
+        { type: 'Pinzas', value:"https://firebasestorage.googleapis.com/v0/b/fichas-pabe-delta.appspot.com/o/pinza.jpg?alt=media&token=46badb09-fa3c-4174-9c9a-b26db5cdd373"}
+    ]
+
+    const handelChange = (e, type) => {
+        setOpciones({...opciones,[type]:e.target.value })
+    }
+
+    const showText = (e, type) => {
+        e.preventDefault();
+        setOpciones({
+            ...opciones, [type]:true
+        })
     }
 
     return (
@@ -133,20 +169,68 @@ function BodyRigth({state, setState}){
                 </div>
                 <div className="ancho row">
                     <div className="img-txt"> 
-                        <p> img1 </p>
-                        <p> text1 </p>
+                        { opciones.opcion1.length > 0 ?
+                            <img src={opciones.opcion1} className="img-select" alt="img-default" /> : 
+                            <select onChange={e => handelChange(e, 'opcion1')}>
+                                <option> Elige</option>
+                                {listImg.map( (item,key) => <option key={key} value={item.value} > {item.type} </option>)}
+                            </select>
+                        }
+                        { opciones.show1 ?
+                            <p> {opciones.text1} </p> :
+                            <Fragment>
+                                <input type="text" name="text1" onChange={e => setOpciones({...opciones, [e.target.name]:e.target.value }) } />
+                                <button type="button" onClick={e => showText(e, 'show1')}><i class="fas fa-check"></i></button>
+                            </Fragment>
+                        }
                     </div>
                     <div className="img-txt"> 
-                        <p> img1 </p>
-                        <p> text1 </p>
+                        { opciones.opcion2.length > 0 ?
+                            <img src={opciones.opcion2} className="img-select" alt="img-default" /> : 
+                            <select onChange={e => handelChange(e, 'opcion2')}>
+                                <option> Elige</option>
+                                {listImg.map( (item,key) => <option key={key} value={item.value} > {item.type} </option>)}
+                            </select>
+                        }
+                        { opciones.show2 ?
+                            <p> {opciones.text2} </p> :
+                            <Fragment>
+                                <input type="text" name="text2" onChange={e => setOpciones({...opciones, [e.target.name]:e.target.value }) } />
+                                <button type="button" onClick={e => showText(e, 'show2')}><i class="fas fa-check"></i></button>
+                            </Fragment>
+                        }
                     </div>
                     <div className="img-txt"> 
-                        <p> img1 </p>
-                        <p> text1 </p>
+                        { opciones.opcion3.length > 0 ?
+                            <img src={opciones.opcion3} className="img-select" alt="img-default" /> : 
+                            <select onChange={e => handelChange(e, 'opcion3')}>
+                                <option> Elige</option>
+                                {listImg.map( (item,key) => <option key={key} value={item.value} > {item.type} </option>)}
+                            </select>
+                        }
+                        { opciones.show3 ?
+                            <p> {opciones.text3} </p> :
+                            <Fragment>
+                                <input type="text" name="text3" onChange={e => setOpciones({...opciones, [e.target.name]:e.target.value }) } />
+                                <button type="button" onClick={e => showText(e, 'show3')}><i class="fas fa-check"></i></button>
+                            </Fragment>
+                        }
                     </div>
-                    <div className="img-txt">
-                        <p> img1 </p>
-                        <p> text1 </p>
+                    <div className="img-txt"> 
+                        { opciones.opcion4.length > 0 ?
+                            <img src={opciones.opcion4} className="img-select" alt="img-default" /> : 
+                            <select onChange={e => handelChange(e, 'opcion4')}>
+                                <option> Elige</option>
+                                {listImg.map( (item,key) => <option key={key} value={item.value} > {item.type} </option>)}
+                            </select>
+                        }
+                        { opciones.show4 ?
+                            <p> {opciones.text4} </p> :
+                            <Fragment>
+                                <input type="text" name="text4" onChange={e => setOpciones({...opciones, [e.target.name]:e.target.value }) } />
+                                <button type="button" onClick={e => showText(e, 'show4')}><i class="fas fa-check"></i></button>
+                            </Fragment>
+                        }
                     </div>
                 </div>
             </div>

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './template-header.css';
+import imgLogo from '../../Img/logopolar.png';
 
 function TemplateHeader(props){
 
@@ -29,7 +30,7 @@ function TemplateHeader(props){
                     <h6> Bloqueo y Etiquetado (PABE) </h6>
                 </div>
             <div className="col-sm-5 col-md-5">
-                <img src="./img/logopolar.png" alt="logo polar" className="logo-img" />
+                <img src={imgLogo} alt="logo polar" className="logo-img" />
             </div>
             </div>
             <div className="row">
