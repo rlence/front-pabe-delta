@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import BodyLeft from './Body-left';
 import BodyRigth from './Body-rigth';
 
-function TemplateBody(props){
+function TemplateBody({ templates, setTemplates }){
 
     const [state, setState] = useState({
         firstImg:"",
@@ -23,10 +23,33 @@ function TemplateBody(props){
         listPabe:[]
 
 
-    }) 
-    console.log(state)
+    });
+
+    const handelChange = e => {
+
+        if(e.target.name === 'firstImg'){
+            console.log('estoy aqui')
+            setState({...state, [e.target.name]:e.target.files[0]})
+        }else{
+            console.log('estoy en el esle')
+            setState({
+                ...state,
+                [e.target.name]:e.target.value   
+            })
+        }
+
+    }
+    
+    const handelSubmit = e=>{
+        e.preventDefault();
+        setTemplates({
+            ...templates,
+            templatesBody:state
+        })
+    }
+
     return(
-        <form onChange={e => setState({...state, [e.target.name]:e.target.value})}>
+        <form onChange={handelChange}>
             <div className="row">
                 <div className="col-sm-6 col-md-6">
                     <BodyLeft  state={state} setState={setState} />
@@ -35,6 +58,7 @@ function TemplateBody(props){
                     <BodyRigth state={state} setState={setState} />
                 </div>
             </div>
+            <button type="submit" onClick={handelSubmit}  class="btn btn-success pre-save">Save</button>
         </form>
     )
 }

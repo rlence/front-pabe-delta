@@ -4,6 +4,7 @@ import {Redirect} from 'react-router-dom';
 import "./listDay.css";
 
 function ListDay(props) {
+
   const [state, setState] = useState({
     data: [],
     date: "",
@@ -29,7 +30,8 @@ function ListDay(props) {
     // eslint-disable-next-line 
     getDataDocument(id);
   }, []);
-
+  console.log(state)
+  console.log(redirect)
   const getDataDocument = (id) => {
     getOneDocument(id)
       .then((res) => {
@@ -57,9 +59,10 @@ function ListDay(props) {
   };
 
   const selectDocument = (e, data) => {
-    const saveLocal = JSON.parse(data);
+    const saveLocal = JSON.stringify(data);
     sessionStorage.setItem('templateData', saveLocal);
     setRedirect({...redirect, id: data.name, template:true})
+    console.log(`/template/${state.date}/${data.name}`)
 
   };
 
@@ -169,7 +172,7 @@ function ListDay(props) {
         </div>
       </div>
 
-    {redirect.template ? <React to={`/template/${state.date}/${redirect.id}`} /> : null }  
+    {redirect.template ? <Redirect to={`/template/${state.date}/${redirect.id}`} /> : null }  
     {redirect.back ? <Redirect to="/pabelist" /> : null}
     </Fragment>
   );

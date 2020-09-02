@@ -1,7 +1,7 @@
 import React, {useState, Fragment} from 'react';
 import './Template-footer.css';
 
-function BodyFooter(props){
+function BodyFooter({ templates, setTemplates }){
 
     const [state, setState] = useState({
         puntoImg1:'',
@@ -80,7 +80,13 @@ function BodyFooter(props){
         }
     }
 
-    console.log(state)
+    const handelSubmit = e => {
+        e.preventDefault();
+        setTemplates({
+            ...templates,
+            templanteFooter:state
+        })
+    }
     return(
         <form onChange={ e => handeltChange(e)} > 
             <div className="red-box">
@@ -171,6 +177,7 @@ function BodyFooter(props){
       
                 </div>
             </div>
+            <button type="submit" onClick={handelSubmit}  class="btn btn-success pre-save">Save</button>
         </form>
     )
 }

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import './template-header.css';
 import imgLogo from '../../Img/logopolar.png';
 
-function TemplateHeader(props){
+function TemplateHeader({ templates, setTemplates}){
 
     const [state, setState] = useState({
         maquina:"",
@@ -18,10 +18,12 @@ function TemplateHeader(props){
 
     const handelSubmit = e => {
         e.preventDefault();
-
+        setTemplates({
+            ...templates,
+            teamplateHaeder: state
+        })
     }
 
-    console.log(state)
     return (
         <from onChange={ e => setState({...state, [e.target.name]: e.target.value})} submit={handelSubmit} >
             <div className="row">
@@ -73,6 +75,7 @@ function TemplateHeader(props){
                     <input type="text " name="rev" />
                 </div>
             </div>
+            <button type="submit" onClick={handelSubmit}  className="btn btn-success pre-save">Save</button>
         </from>
     );
 };
