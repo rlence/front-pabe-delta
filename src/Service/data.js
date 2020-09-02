@@ -91,6 +91,8 @@ export async function newTemplate(templateName, id){
 
 }
 
-export function saveData(){
+export function saveData(data){
+    console.log(data)
 
+    return Promise.resolve(true)
 }

@@ -68,11 +68,33 @@ function BodyRigth({state, setState}){
     ]
 
     const handelChange = (e, type) => {
+        console.log(type)
+        console.log(e.target.value)
         setOpciones({...opciones,[type]:e.target.value })
-    }
+        switch(type){
+            case 'opcion1':
+                setState({...state, opcion1:e.target.value });
+                break;
 
+            case 'opcion2':
+                setState({...state, opcion2:e.target.value });
+                break;
+
+            case 'opcion3':
+                setState({...state, opcion3:e.target.value });
+                break;
+
+            case 'opcion4':
+                setState({...state, opcion4:e.target.value });
+                break;
+        }
+        
+    }
+    console.log(opciones)
+    console.log(state)
     const showText = (e, type) => {
         e.preventDefault();
+        console.log(type)
         setOpciones({
             ...opciones, [type]:true
         })

@@ -20,17 +20,25 @@ function TemplateBody({ templates, setTemplates }){
         listPuesta:[],
         pabe:"",
         pabeAmount:"",
-        listPabe:[]
-
-
+        listPabe:[],
+        opcion1:'',
+        text1:"",
+        opcion2:'',
+        text2:"",
+        opcion3:'',
+        text3:"",
+        opcion4:'',
+        text4:"",
     });
 
     const handelChange = e => {
-
+        console.log(e.target.name)
         if(e.target.name === 'firstImg'){
+
             console.log('estoy aqui')
             setState({...state, [e.target.name]:e.target.files[0]})
-        }else{
+
+        }else if(e.target.name !== '') {
             console.log('estoy en el esle')
             setState({
                 ...state,
