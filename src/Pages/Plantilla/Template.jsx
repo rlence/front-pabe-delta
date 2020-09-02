@@ -16,6 +16,11 @@ function Template(props){
     const [back, setBack] = useState({
         back: false,
         id:''
+    });
+
+    const [err, setErr] = useState({
+        show:false,
+        message:''
     })
     
     const goback = e => {
@@ -26,6 +31,12 @@ function Template(props){
 
     const dataSave= e =>{
         e.preventDefault();
+        const {teamplateHaeder, templanteFooter, templatesBody} = templates;
+        if(typeof teamplateHaeder === 'string' || typeof templatesBody === 'string' || typeof templanteFooter === 'string'){
+            setErr({ show:true, message:"porfavor guardar todos los elementos antes de guardar la plantilla (Cabecera de plantilla, cuerpo de plantilla, Puntos de Bloqueo)"});
+            return;
+        }
+
         saveData(templates)
         .then( res => {
             console.log(res);
@@ -43,8 +54,14 @@ function Template(props){
             <TemplateBody templates={templates}  setTemplates={setTemplates}/>
             <TemplateFooter templates={templates}  setTemplates={setTemplates}/>
             <div className="footer-template">
-                <button type="button" onClick={goback} class="btn btn-secondary col-sm-6 col-md-6">Cancelar</button>
-                <button type="button" onClick={dataSave} class="btn btn-success col-sm-6 col-md-6">Guardar</button>
+                {err.show ? 
+                    <div className="alert alert-danger" role="alert">
+                        {err.message}
+                    </div>
+                    : null
+                }
+                <button type="button" onClick={goback} className="btn btn-secondary col-sm-6 col-md-6">Cancelar</button>
+                <button type="button" onClick={dataSave} className="btn btn-success col-sm-6 col-md-6">Guardar</button>
             </div>
             {back.back ? <Redirect to={`/listday/${back.id}`} /> : null }
         </div>

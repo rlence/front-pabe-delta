@@ -75,7 +75,7 @@ function TemplateHeader({ templates, setTemplates}){
                     <input type="text " name="rev" />
                 </div>
             </div>
-            <button type="submit" onClick={handelSubmit}  className="btn btn-success pre-save">Save</button>
+            <button type="submit" onClick={handelSubmit}  className="btn btn-success pre-save">Save Cabera de Plantilla  </button>
         </from>
     );
 };

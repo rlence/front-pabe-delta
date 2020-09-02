@@ -177,7 +177,7 @@ function BodyFooter({ templates, setTemplates }){
       
                 </div>
             </div>
-            <button type="submit" onClick={handelSubmit}  class="btn btn-success pre-save">Save</button>
+            <button type="submit" onClick={handelSubmit}  class="btn btn-success pre-save">Save Punto de Bloqueo</button>
         </form>
     )
 }

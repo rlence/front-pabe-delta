@@ -66,7 +66,7 @@ function TemplateBody({ templates, setTemplates }){
                     <BodyRigth state={state} setState={setState} />
                 </div>
             </div>
-            <button type="submit" onClick={handelSubmit}  class="btn btn-success pre-save">Save</button>
+            <button type="submit" onClick={handelSubmit}  class="btn btn-success pre-save">Save Cuerpo de Plantilla </button>
         </form>
     )
 }
