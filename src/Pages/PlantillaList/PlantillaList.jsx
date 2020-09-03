@@ -40,7 +40,8 @@ function PlantillaList(props) {
         e.preventDefault();
         createNewDocument()
         .then( res => {
-            if(res !== undefined){
+            console.log(res)
+            if(res === undefined){
                 stateInitial();
             }
         })

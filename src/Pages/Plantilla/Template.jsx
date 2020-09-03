@@ -36,13 +36,11 @@ function Template(props){
             setErr({ show:true, message:"porfavor guardar todos los elementos antes de guardar la plantilla (Cabecera de plantilla, cuerpo de plantilla, Puntos de Bloqueo)"});
             return;
         }
-
-        saveData(templates)
+        const url = window.location.pathname.split('/');
+            
+        saveData(templates, url[2], url[3] )
         .then( res => {
-            console.log(res);
-            const url = window.location.pathname.split('/');
             setBack({ back:true, id: url[2]})
-
         }).catch(err => {
             console.log(err)
         })

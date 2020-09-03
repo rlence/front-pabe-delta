@@ -1,8 +1,10 @@
 import firebase from '../Config/firebase';
 import fire from 'firebase';
 import moment from 'moment';
+import TemplateHeader from '../Components/Plantilla-Header/Template-header';
 moment.locale('es')
 const db = firebase.firestore();
+const storage = firebase.storage().ref();
 
 export async function getDocuments(){
 
@@ -91,8 +93,96 @@ export async function newTemplate(templateName, id){
 
 }
 
-export function saveData(data){
-    console.log(data)
+export async function saveData(data, date, name){
+    try{
 
-    return Promise.resolve(true)
+        const {teamplateHaeder, templatesBody, templanteFooter} = data;
+        
+        const {firstImg, listDesactivacion, listActivacion, listPresentes, 
+                listBloqueo, listResiduales, listPuesta, listPabe, 
+                opcion1, text1, opcion2, text2, opcion3, text3, opcion4, text4
+        } = templatesBody;
+        const uploadTask1 = await uploadFile(firstImg);
+        const body = {
+            firstImg: uploadTask1,
+            listDesactivacion,
+            listActivacion,
+            listPresentes,
+            listBloqueo,
+            listResiduales,
+            listPuesta,
+            listPabe,
+            opcion1,
+            text1,
+            opcion2,
+            text2,
+            opcion3,
+            text3,
+            opcion4,
+            text4
+        }
+
+        const {puntoImg1, puntoText1, puntoImg2, puntoText2, 
+            puntoImg3,puntoText3, puntoImg4,puntoText4, puntoImg5,puntoText5,
+            puntoImg6, puntoText6
+        } = templanteFooter;
+
+        const uploadTask2 = puntoImg1 !== '' ? await uploadFile(puntoImg1) : '';
+        const uploadTask3 = puntoImg2 !== '' ? await uploadFile(puntoImg2) : '';
+        const uploadTask4 = puntoImg3 !== '' ? await uploadFile(puntoImg3) : '';
+        const uploadTask5 = puntoImg4 !== '' ? await uploadFile(puntoImg4) : '';
+        const uploadTask6 = puntoImg5 !== '' ? await uploadFile(puntoImg5) : '';
+        const uploadTask7 = puntoImg6 !== '' ? await uploadFile(puntoImg6) : '';
+
+        const footer = {
+            puntoImg1:  uploadTask2,
+            puntoText1,
+            puntoImg2: uploadTask3,
+            puntoText2,
+            puntoImg3: uploadTask4,
+            puntoText3,
+            puntoImg4: uploadTask5,
+            puntoText4,
+            puntoImg5: uploadTask6,
+            puntoText5,
+            puntoImg6: uploadTask7,
+            puntoText6
+        }
+
+        const res = await db.collection("template").doc(date).get();
+        let dataDays = [];
+        const docs = await res.data().list;  
+        
+
+        docs.map( item => {
+            if(item.name === name){
+                item.body = body;
+                item.header = teamplateHaeder;
+                item.footer = footer;
+            }
+        })
+        
+        const updateRes = await db.collection("template").doc(date).update({
+            list:docs
+        })
+        return Promise.resolve(true)
+
+    }catch(err){
+        console.log('err', err);
+        Promise.reject(false);
+    }
+}
+
+const uploadFile = async (file) => {
+    try{
+        const uploadTask =  storage.child(file.name).put(file);
+        const urlDonload =  await uploadTask.snapshot.ref.getDownloadURL()
+        return urlDonload;
+        
+    }catch(err){
+        console.log(err);
+        return err;
+    }
+   
+
 }
